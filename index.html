@@ -145,10 +145,7 @@
       color: var(--fg);
       margin-bottom: 24px;
     }
-    .hero-name em {
-      font-style: normal;
-      color: var(--accent);
-    }
+    .hero-name em { font-style: normal; color: var(--accent); }
     .hero-sub {
       font-size: 1.1rem;
       font-weight: 300;
@@ -168,16 +165,9 @@
       cursor: pointer;
       border: none;
     }
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-    }
+    .btn-primary { background: var(--accent); color: #fff; }
     .btn-primary:hover { filter: brightness(1.1); text-decoration: none; transform: translateY(-1px); }
-    .btn-outline {
-      background: transparent;
-      color: var(--fg);
-      border: 1.5px solid var(--border);
-    }
+    .btn-outline { background: transparent; color: var(--fg); border: 1.5px solid var(--border); }
     .btn-outline:hover { border-color: var(--fg-muted); text-decoration: none; transform: translateY(-1px); }
     .hero-scroll {
       margin-top: 70px;
@@ -186,22 +176,11 @@
       display: flex; align-items: center; gap: 8px;
       letter-spacing: 0.04em;
     }
-    .scroll-line {
-      width: 40px; height: 1px;
-      background: var(--fg-muted);
-    }
+    .scroll-line { width: 40px; height: 1px; background: var(--fg-muted); }
 
     /* ─── ABOUT ─── */
-    .about-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 48px; align-items: start;
-    }
-    .about-text p {
-      color: var(--fg-muted);
-      margin-bottom: 14px;
-      font-size: 1rem;
-      line-height: 1.8;
-    }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .about-text p { color: var(--fg-muted); margin-bottom: 14px; font-size: 1rem; line-height: 1.8; }
     .about-facts { display: flex; flex-direction: column; gap: 16px; }
     .fact-item {
       background: var(--bg-card);
@@ -226,14 +205,8 @@
       transition: all 0.2s;
       cursor: default;
     }
-    .skill-chip:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-2px);
-    }
-    .skill-category {
-      margin-bottom: 28px;
-    }
+    .skill-chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+    .skill-category { margin-bottom: 28px; }
     .skill-cat-label {
       font-size: 0.75rem; font-weight: 600;
       color: var(--fg-muted);
@@ -269,22 +242,14 @@
     .project-title {
       font-family: 'Syne', sans-serif;
       font-size: 1.25rem; font-weight: 700;
-      color: var(--fg);
-      margin-bottom: 10px;
+      color: var(--fg); margin-bottom: 10px;
     }
-    .project-desc {
-      color: var(--fg-muted);
-      font-size: 0.95rem;
-      line-height: 1.7;
-      margin-bottom: 18px;
-    }
+    .project-desc { color: var(--fg-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 18px; }
     .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
     .ptag {
-      background: var(--tag-bg);
-      color: var(--tag-fg);
+      background: var(--tag-bg); color: var(--tag-fg);
       font-size: 0.75rem; font-weight: 600;
-      padding: 4px 12px;
-      border-radius: 6px;
+      padding: 4px 12px; border-radius: 6px;
     }
     .project-links { display: flex; gap: 12px; }
 
@@ -311,6 +276,7 @@
     .cert-date { font-size: 0.78rem; color: var(--fg-muted); }
 
     /* ─── EDUCATION ─── */
+    .edu-list { display: flex; flex-direction: column; gap: 16px; }
     .edu-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -322,18 +288,22 @@
       width: 14px; height: 14px; border-radius: 50%;
       background: var(--accent); flex-shrink: 0; margin-top: 5px;
     }
-    .edu-degree {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.1rem; font-weight: 700; margin-bottom: 4px;
-    }
+    .edu-degree { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
     .edu-school { color: var(--fg-muted); font-size: 0.9rem; margin-bottom: 4px; }
     .edu-meta { font-size: 0.8rem; color: var(--fg-muted); }
 
-    /* ─── CONTACT ─── */
-    .contact-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 16px;
+    /* ─── RESUME ─── */
+    .resume-actions { display: flex; justify-content: flex-end; margin-bottom: 18px; }
+    .resume-frame-wrap {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--bg-card);
     }
+    .resume-frame-wrap iframe { display: block; width: 100%; height: 700px; border: none; }
+
+    /* ─── CONTACT ─── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .contact-item {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -382,14 +352,12 @@
       .hero-name { font-size: clamp(2.4rem, 12vw, 4rem); }
       .project-card { padding: 22px; }
       .edu-card { flex-direction: column; gap: 14px; }
+      .resume-frame-wrap iframe { height: 460px; }
     }
     .theme-wrapper { display: flex; align-items: center; gap: 8px; }
 
     /* ─── HERO PHOTO ─── */
-    .hero-inner {
-      display: flex; align-items: center;
-      justify-content: space-between; gap: 40px;
-    }
+    .hero-inner { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
     .hero-content { flex: 1; }
     .hero-photo-wrap {
       flex-shrink: 0;
@@ -398,13 +366,8 @@
       border: 3px solid var(--border);
       overflow: hidden;
       box-shadow: 0 12px 40px var(--shadow);
-      position: relative;
     }
-    .hero-photo-wrap img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center top;
-      display: block;
-    }
+    .hero-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
     @media (max-width: 640px) {
       .hero-inner { flex-direction: column-reverse; gap: 24px; }
       .hero-photo-wrap { width: 140px; height: 140px; }
@@ -418,12 +381,7 @@
       background: var(--bg-muted);
       border: 1px solid var(--border);
     }
-    .cert-img-wrap img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-      display: block;
-    }
+    .cert-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; display: block; }
     .cert-img-wrap:hover img { transform: scale(1.04); }
 
     /* ─── LIGHTBOX ─── */
@@ -435,11 +393,7 @@
       padding: 24px;
     }
     .lightbox.open { display: flex; }
-    .lightbox img {
-      max-width: 92vw; max-height: 88vh;
-      border-radius: 10px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-    }
+    .lightbox img { max-width: 92vw; max-height: 88vh; border-radius: 10px; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
     .lightbox-close {
       position: absolute; top: 20px; right: 24px;
       background: none; border: none;
@@ -457,7 +411,8 @@
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
-    <a href="#certificates">Certificates</a>
+    <a href="#certificates">Certs</a>
+    <a href="#resume">Resume</a>
     <a href="#education">Education</a>
     <a href="#contact">Contact</a>
     <div class="theme-wrapper">
@@ -479,6 +434,7 @@
         </p>
         <div class="hero-links fade-up delay-3">
           <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="resume.pdf" target="_blank" class="btn btn-outline">📄 Resume</a>
           <a href="https://www.linkedin.com/in/yuvraj-arya-b1a827305/" target="_blank" class="btn btn-outline">💼 LinkedIn</a>
           <a href="https://github.com/yuvrajarya2006-hue" target="_blank" class="btn btn-outline">⚙️ GitHub</a>
         </div>
@@ -593,7 +549,7 @@
 
       <div class="project-card">
         <div class="project-num">01</div>
-        <div class="project-title">To-Do List App</div>
+        <div class="project-title">Task Manager Web App</div>
         <div class="project-desc">
           A clean, interactive task manager built with vanilla JavaScript. Supports adding tasks, marking them as complete with a visual strikethrough, and deleting them with a smooth fade-out animation. Features keyboard support (Enter key) and a polished gradient UI.
         </div>
@@ -680,41 +636,57 @@
   </div>
 </section>
 
+<!-- RESUME -->
+<section id="resume">
+  <div class="container">
+    <div class="section-label">// Resume</div>
+    <h2 class="section-title">My Resume</h2>
+    <div class="resume-actions">
+      <a href="resume.pdf" download="Yuvraj_Arya_Resume.pdf" class="btn btn-primary">⬇ Download Resume</a>
+    </div>
+    <div class="resume-frame-wrap">
+      <iframe src="resume.pdf" title="Yuvraj Arya Resume">
+        <p>Your browser doesn't support inline PDFs.
+          <a href="resume.pdf" download="Yuvraj_Arya_Resume.pdf">Download the resume instead.</a>
+        </p>
+      </iframe>
+    </div>
+  </div>
+</section>
+
 <!-- EDUCATION -->
 <section id="education">
   <div class="container">
     <div class="section-label">// Background</div>
     <h2 class="section-title">Education</h2>
-    <div class="edu-card">
-      <div class="edu-dot"></div>
-      <div>
-        <div class="edu-degree">B.Tech — Computer Science & Engineering</div>
-        <div class="edu-school">Lovely Professional University, Phagwara, Punjab</div>
-        <div class="edu-meta">2025 – Present</div>
+    <div class="edu-list">
+      <div class="edu-card">
+        <div class="edu-dot"></div>
+        <div>
+          <div class="edu-degree">B.Tech — Computer Science & Engineering</div>
+          <div class="edu-school">Lovely Professional University, Phagwara, Punjab</div>
+          <div class="edu-meta">2025 – Present</div>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-dot"></div>
+        <div>
+          <div class="edu-degree">Class XII (Senior Secondary)</div>
+          <div class="edu-school">Utkramit Madhyamik Vidiyalaya, Begusarai, Bihar</div>
+          <div class="edu-meta">2024</div>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-dot"></div>
+        <div>
+          <div class="edu-degree">Class X (Secondary)</div>
+          <div class="edu-school">BRDAV Public School, Begusarai, Bihar</div>
+          <div class="edu-meta">2022</div>
+        </div>
       </div>
     </div>
-    <br>
-    <div class="edu-card">
-  <div class="edu-dot"></div>
-  <div>
-    <div class="edu-degree">Class XII (Senior Secondary)</div>
-    <div class="edu-school">Utkramit Madhyamik Vidiyalaya, Begusarai, Bihar</div>
-    <div class="edu-meta">2024</div>
   </div>
-</div>
-<br>
-<div class="edu-card">
-  <div class="edu-dot"></div>
-  <div>
-    <div class="edu-degree">Class X (Secondary)</div>
-    <div class="edu-school">BRDAV Public School, Begusarai, Bihar</div>
-    <div class="edu-meta">2022</div>
-  </div>
-</div>
-  </div>
-  
 </section>
-
 
 <!-- CONTACT -->
 <section id="contact">
@@ -782,7 +754,6 @@
   const label = document.getElementById('themeLabel');
   const html = document.documentElement;
 
-  // Load saved theme
   const saved = localStorage.getItem('theme') || 'light';
   html.setAttribute('data-theme', saved);
   label.textContent = saved === 'dark' ? '🌙' : '☀️';
