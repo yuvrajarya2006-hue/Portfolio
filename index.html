@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yuvraj Arya — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    /* ─── THEME TOKENS ─── */
+    :root {
+      --bg: #f5f3ee;
+      --bg-card: #ffffff;
+      --bg-muted: #ece9e2;
+      --fg: #1a1714;
+      --fg-muted: #6b6560;
+      --accent: #2e5de6;
+      --accent-2: #e85d26;
+      --border: #dedad3;
+      --shadow: rgba(0,0,0,0.07);
+      --tag-bg: #e8e4fd;
+      --tag-fg: #3d2fcf;
+      --nav-bg: rgba(245,243,238,0.88);
+    }
+    [data-theme="dark"] {
+      --bg: #111010;
+      --bg-card: #1c1b19;
+      --bg-muted: #252320;
+      --fg: #f0ede6;
+      --fg-muted: #8a8480;
+      --accent: #5b82ff;
+      --accent-2: #ff7a48;
+      --border: #2e2c28;
+      --shadow: rgba(0,0,0,0.4);
+      --tag-bg: #1e2248;
+      --tag-fg: #91a9ff;
+      --nav-bg: rgba(17,16,16,0.88);
+    }
+
+    /* ─── RESET ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw;
+      height: 58px;
+      transition: background 0.3s;
+    }
+    .nav-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 1.1rem;
+      color: var(--fg);
+      letter-spacing: -0.02em;
+    }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a {
+      font-size: 0.85rem; font-weight: 500;
+      color: var(--fg-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      letter-spacing: 0.02em;
+    }
+    .nav-links a:hover { color: var(--fg); }
+
+    /* Theme Toggle */
+    .theme-btn {
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      width: 48px; height: 26px;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.3s;
+      flex-shrink: 0;
+    }
+    .theme-btn::after {
+      content: '';
+      position: absolute;
+      top: 3px; left: 3px;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: var(--accent);
+      transition: transform 0.3s;
+    }
+    [data-theme="dark"] .theme-btn::after { transform: translateX(22px); }
+    .theme-icon { font-size: 0.75rem; display: flex; align-items: center; gap: 6px; }
+
+    /* ─── SECTIONS & LAYOUT ─── */
+    .container { max-width: 860px; margin: 0 auto; padding: 0 5vw; }
+    section { padding: 80px 0; }
+    section:not(:last-child) { border-bottom: 1px solid var(--border); }
+
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.7rem, 3vw, 2.2rem);
+      font-weight: 800; line-height: 1.15;
+      color: var(--fg);
+      margin-bottom: 36px;
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding-top: 100px;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: var(--tag-bg);
+      color: var(--tag-fg);
+      font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+    .hero-name {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: var(--fg);
+      margin-bottom: 24px;
+    }
+    .hero-name em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--fg-muted);
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .hero-links { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: 0.88rem; font-weight: 600;
+      transition: all 0.2s;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-primary:hover { filter: brightness(1.1); text-decoration: none; transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--fg);
+      border: 1.5px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--fg-muted); text-decoration: none; transform: translateY(-1px); }
+    .hero-scroll {
+      margin-top: 70px;
+      color: var(--fg-muted);
+      font-size: 0.8rem;
+      display: flex; align-items: center; gap: 8px;
+      letter-spacing: 0.04em;
+    }
+    .scroll-line {
+      width: 40px; height: 1px;
+      background: var(--fg-muted);
+    }
+
+    /* ─── ABOUT ─── */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 48px; align-items: start;
+    }
+    .about-text p {
+      color: var(--fg-muted);
+      margin-bottom: 14px;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+    .about-facts { display: flex; flex-direction: column; gap: 16px; }
+    .fact-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 20px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .fact-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .fact-label { font-size: 0.75rem; color: var(--fg-muted); margin-bottom: 2px; }
+    .fact-value { font-weight: 600; font-size: 0.95rem; color: var(--fg); }
+
+    /* ─── SKILLS ─── */
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skill-chip {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      color: var(--fg);
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 0.88rem; font-weight: 500;
+      transition: all 0.2s;
+      cursor: default;
+    }
+    .skill-chip:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .skill-category {
+      margin-bottom: 28px;
+    }
+    .skill-cat-label {
+      font-size: 0.75rem; font-weight: 600;
+      color: var(--fg-muted);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    /* ─── PROJECTS ─── */
+    .projects-list { display: flex; flex-direction: column; gap: 24px; }
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 32px;
+      transition: all 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      opacity: 0; transition: opacity 0.2s;
+    }
+    .project-card:hover { box-shadow: 0 8px 32px var(--shadow); transform: translateY(-3px); }
+    .project-card:hover::before { opacity: 1; }
+    .project-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.72rem; font-weight: 700;
+      color: var(--accent); letter-spacing: 0.1em;
+      margin-bottom: 10px;
+    }
+    .project-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.25rem; font-weight: 700;
+      color: var(--fg);
+      margin-bottom: 10px;
+    }
+    .project-desc {
+      color: var(--fg-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+    .ptag {
+      background: var(--tag-bg);
+      color: var(--tag-fg);
+      font-size: 0.75rem; font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 6px;
+    }
+    .project-links { display: flex; gap: 12px; }
+
+    /* ─── CERTIFICATES ─── */
+    .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 18px; }
+    .cert-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+      transition: all 0.2s;
+    }
+    .cert-card:hover { box-shadow: 0 6px 20px var(--shadow); transform: translateY(-2px); }
+    .cert-icon { font-size: 1.6rem; margin-bottom: 12px; }
+    .cert-issuer {
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--accent); margin-bottom: 6px;
+    }
+    .cert-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem; font-weight: 700; color: var(--fg);
+      line-height: 1.3; margin-bottom: 8px;
+    }
+    .cert-date { font-size: 0.78rem; color: var(--fg-muted); }
+
+    /* ─── EDUCATION ─── */
+    .edu-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 32px;
+      display: flex; gap: 24px; align-items: flex-start;
+    }
+    .edu-dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--accent); flex-shrink: 0; margin-top: 5px;
+    }
+    .edu-degree {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem; font-weight: 700; margin-bottom: 4px;
+    }
+    .edu-school { color: var(--fg-muted); font-size: 0.9rem; margin-bottom: 4px; }
+    .edu-meta { font-size: 0.8rem; color: var(--fg-muted); }
+
+    /* ─── CONTACT ─── */
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .contact-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      display: flex; align-items: center; gap: 16px;
+      transition: all 0.2s;
+      text-decoration: none; color: var(--fg);
+    }
+    .contact-item:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px var(--shadow);
+      text-decoration: none;
+    }
+    .contact-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .contact-label { font-size: 0.72rem; color: var(--fg-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 2px; }
+    .contact-value { font-weight: 600; font-size: 0.9rem; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      text-align: center;
+      padding: 32px 0;
+      font-size: 0.8rem;
+      color: var(--fg-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { opacity: 0; animation: fadeUp 0.6s ease forwards; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.22s; }
+    .delay-3 { animation-delay: 0.34s; }
+    .delay-4 { animation-delay: 0.46s; }
+    .delay-5 { animation-delay: 0.58s; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 640px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .nav-links a:not(.theme-wrapper) { display: none; }
+      .hero-name { font-size: clamp(2.4rem, 12vw, 4rem); }
+      .project-card { padding: 22px; }
+      .edu-card { flex-direction: column; gap: 14px; }
+    }
+    .theme-wrapper { display: flex; align-items: center; gap: 8px; }
+
+    /* ─── HERO PHOTO ─── */
+    .hero-inner {
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 40px;
+    }
+    .hero-content { flex: 1; }
+    .hero-photo-wrap {
+      flex-shrink: 0;
+      width: 220px; height: 220px;
+      border-radius: 50%;
+      border: 3px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 12px 40px var(--shadow);
+      position: relative;
+    }
+    .hero-photo-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+    }
+    @media (max-width: 640px) {
+      .hero-inner { flex-direction: column-reverse; gap: 24px; }
+      .hero-photo-wrap { width: 140px; height: 140px; }
+    }
+
+    /* ─── CERT IMAGE ─── */
+    .cert-img-wrap {
+      width: 100%; aspect-ratio: 16/9;
+      overflow: hidden; border-radius: 8px;
+      margin-bottom: 16px; cursor: zoom-in;
+      background: var(--bg-muted);
+      border: 1px solid var(--border);
+    }
+    .cert-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      display: block;
+    }
+    .cert-img-wrap:hover img { transform: scale(1.04); }
+
+    /* ─── LIGHTBOX ─── */
+    .lightbox {
+      display: none; position: fixed;
+      inset: 0; z-index: 999;
+      background: rgba(0,0,0,0.88);
+      align-items: center; justify-content: center;
+      padding: 24px;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 92vw; max-height: 88vh;
+      border-radius: 10px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+    .lightbox-close {
+      position: absolute; top: 20px; right: 24px;
+      background: none; border: none;
+      color: #fff; font-size: 2rem;
+      cursor: pointer; line-height: 1;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-brand">YA.</span>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#certificates">Certificates</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+    <div class="theme-wrapper">
+      <span class="theme-icon" id="themeLabel">☀️</span>
+      <button class="theme-btn" id="themeToggle" aria-label="Toggle theme"></button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-tag fade-up">📍 Patna, Bihar · LPU, Punjab</div>
+        <h1 class="hero-name fade-up delay-1">Yuvraj<br><em>Arya</em></h1>
+        <p class="hero-sub fade-up delay-2">
+          B.Tech CSE Student at Lovely Professional University — aspiring software developer passionate about problem solving, web development, and building things that actually work.
+        </p>
+        <div class="hero-links fade-up delay-3">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="https://www.linkedin.com/in/yuvraj-arya-b1a827305/" target="_blank" class="btn btn-outline">💼 LinkedIn</a>
+          <a href="https://github.com/yuvrajarya2006-hue" target="_blank" class="btn btn-outline">⚙️ GitHub</a>
+        </div>
+        <div class="hero-scroll fade-up delay-4">
+          <div class="scroll-line"></div>
+          SCROLL TO EXPLORE
+        </div>
+      </div>
+      <div class="hero-photo-wrap fade-up delay-2">
+        <img src="profile.jpg" alt="Yuvraj Arya">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">// About Me</div>
+    <h2 class="section-title">Background</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I'm a B.Tech Computer Science student with a strong interest in software development and problem solving. Currently focused on building a solid foundation in programming and understanding how efficient systems are designed.
+        </p>
+        <p>
+          I am actively learning Data Structures and Algorithms alongside C and C++, while also exploring web development to broaden my technical skills. I prefer learning by doing — so I consistently build small projects to improve.
+        </p>
+        <p>
+          My goal is to become a skilled software engineer and contribute to impactful, efficient solutions. I'm open to internships, collaborations, and opportunities that help me grow and gain real-world experience.
+        </p>
+      </div>
+      <div class="about-facts">
+        <div class="fact-item">
+          <div class="fact-icon">🎓</div>
+          <div>
+            <div class="fact-label">University</div>
+            <div class="fact-value">Lovely Professional University</div>
+          </div>
+        </div>
+        <div class="fact-item">
+          <div class="fact-icon">💻</div>
+          <div>
+            <div class="fact-label">Degree</div>
+            <div class="fact-value">B.Tech — Computer Science</div>
+          </div>
+        </div>
+        <div class="fact-item">
+          <div class="fact-icon">📌</div>
+          <div>
+            <div class="fact-label">Location</div>
+            <div class="fact-value">Patna, Bihar · India</div>
+          </div>
+        </div>
+        <div class="fact-item">
+          <div class="fact-icon">🔍</div>
+          <div>
+            <div class="fact-label">Status</div>
+            <div class="fact-value">Open to Opportunities</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-label">// Tech Stack</div>
+    <h2 class="section-title">Skills & Tools</h2>
+
+    <div class="skill-category">
+      <div class="skill-cat-label">Languages</div>
+      <div class="skills-grid">
+        <div class="skill-chip">HTML</div>
+        <div class="skill-chip">CSS</div>
+        <div class="skill-chip">JavaScript</div>
+        <div class="skill-chip">C</div>
+        <div class="skill-chip">C++</div>
+        <div class="skill-chip">Python</div>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <div class="skill-cat-label">Concepts</div>
+      <div class="skills-grid">
+        <div class="skill-chip">Data Structures</div>
+        <div class="skill-chip">Algorithms</div>
+        <div class="skill-chip">Problem Solving</div>
+        <div class="skill-chip">Web Development</div>
+      </div>
+    </div>
+
+    <div class="skill-category">
+      <div class="skill-cat-label">Tools</div>
+      <div class="skills-grid">
+        <div class="skill-chip">Git</div>
+        <div class="skill-chip">GitHub</div>
+        <div class="skill-chip">VS Code</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label">// Featured Work</div>
+    <h2 class="section-title">Projects</h2>
+    <div class="projects-list">
+
+      <div class="project-card">
+        <div class="project-num">01</div>
+        <div class="project-title">To-Do List App</div>
+        <div class="project-desc">
+          A clean, interactive task manager built with vanilla JavaScript. Supports adding tasks, marking them as complete with a visual strikethrough, and deleting them with a smooth fade-out animation. Features keyboard support (Enter key) and a polished gradient UI.
+        </div>
+        <div class="project-tags">
+          <span class="ptag">HTML</span>
+          <span class="ptag">CSS</span>
+          <span class="ptag">JavaScript</span>
+        </div>
+        <div class="project-links">
+          <a href="todo-app/index.html" target="_blank" class="btn btn-primary" style="font-size:0.82rem;padding:8px 18px;">↗ View Project</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-num">02</div>
+        <div class="project-title">Typing Speed Calculator</div>
+        <div class="project-desc">
+          A real-time typing speed test that calculates words per minute (WPM) and accuracy. Displays a random quote, tracks character-level correctness with live colour feedback, and shows a live timer. Built with a sleek dark aesthetic featuring Spider-Man and Batman logo accents.
+        </div>
+        <div class="project-tags">
+          <span class="ptag">HTML</span>
+          <span class="ptag">CSS</span>
+          <span class="ptag">JavaScript</span>
+        </div>
+        <div class="project-links">
+          <a href="typing-speed-app/index.html" target="_blank" class="btn btn-primary" style="font-size:0.82rem;padding:8px 18px;">↗ View Project</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section id="certificates">
+  <div class="container">
+    <div class="section-label">// Credentials</div>
+    <h2 class="section-title">Certificates</h2>
+    <div class="certs-grid">
+
+      <div class="cert-card">
+        <div class="cert-img-wrap" onclick="openLightbox('Tech_MOOC.png')">
+          <img src="Tech_MOOC.png" alt="Python 101 for Data Science Certificate">
+        </div>
+        <div class="cert-icon">🐍</div>
+        <div class="cert-issuer">IBM / Cognitive Class</div>
+        <div class="cert-name">Python 101 for Data Science</div>
+        <div class="cert-date">February 5, 2026 &nbsp;·&nbsp; <a href="https://courses.cognitiveclass.ai/certificates/79c9958981ec4bb38ff1b9ff70e82d8b" target="_blank">Verify ↗</a></div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-img-wrap" onclick="openLightbox('Nontech_MOOC.png')">
+          <img src="Nontech_MOOC.png" alt="Leadership Fundamentals Certificate">
+        </div>
+        <div class="cert-icon">🌟</div>
+        <div class="cert-issuer">EduTech Hub</div>
+        <div class="cert-name">Leadership Fundamentals</div>
+        <div class="cert-date">October 29, 2025 &nbsp;·&nbsp; Cert No: EDU/10/25/LF-A690</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="container">
+    <div class="section-label">// Highlights</div>
+    <h2 class="section-title">Achievements</h2>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-icon">📚</div>
+        <div class="cert-issuer">Academic</div>
+        <div class="cert-name">Completed Python for Data Science</div>
+        <div class="cert-date">IBM Developer Skills Network · 2026</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🚀</div>
+        <div class="cert-issuer">Goal</div>
+        <div class="cert-name">Building Portfolio Projects in Web Dev</div>
+        <div class="cert-date">Ongoing · 2025–present</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <div class="section-label">// Background</div>
+    <h2 class="section-title">Education</h2>
+    <div class="edu-card">
+      <div class="edu-dot"></div>
+      <div>
+        <div class="edu-degree">B.Tech — Computer Science & Engineering</div>
+        <div class="edu-school">Lovely Professional University, Phagwara, Punjab</div>
+        <div class="edu-meta">2025 – Present</div>
+      </div>
+    </div>
+    <br>
+    <div class="edu-card">
+  <div class="edu-dot"></div>
+  <div>
+    <div class="edu-degree">Class XII (Senior Secondary)</div>
+    <div class="edu-school">Utkramit Madhyamik Vidiyalaya, Begusarai, Bihar</div>
+    <div class="edu-meta">2024</div>
+  </div>
+</div>
+<br>
+<div class="edu-card">
+  <div class="edu-dot"></div>
+  <div>
+    <div class="edu-degree">Class X (Secondary)</div>
+    <div class="edu-school">BRDAV Public School, Begusarai, Bihar</div>
+    <div class="edu-meta">2022</div>
+  </div>
+</div>
+  </div>
+  
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">// Let's Connect</div>
+    <h2 class="section-title">Contact Me</h2>
+    <div class="contact-grid">
+      <a href="mailto:yuvrajarya2006@gmail.com" class="contact-item">
+        <div class="contact-icon">📧</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">yuvrajarya2006@gmail.com</div>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/in/yuvraj-arya-b1a827305/" target="_blank" class="contact-item">
+        <div class="contact-icon">💼</div>
+        <div>
+          <div class="contact-label">LinkedIn</div>
+          <div class="contact-value">Yuvraj Arya</div>
+        </div>
+      </a>
+      <a href="https://github.com/yuvrajarya2006-hue" target="_blank" class="contact-item">
+        <div class="contact-icon">⚙️</div>
+        <div>
+          <div class="contact-label">GitHub</div>
+          <div class="contact-value">yuvrajarya2006-hue</div>
+        </div>
+      </a>
+      <div class="contact-item" style="cursor:default;">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label">Location</div>
+          <div class="contact-value">Patna, Bihar · India</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Yuvraj Arya · Built with HTML, CSS & JS · 2025</p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightboxImg" src="" alt="Certificate">
+</div>
+
+<script>
+  // Lightbox
+  function openLightbox(src) {
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  // Theme toggle
+  const toggle = document.getElementById('themeToggle');
+  const label = document.getElementById('themeLabel');
+  const html = document.documentElement;
+
+  // Load saved theme
+  const saved = localStorage.getItem('theme') || 'light';
+  html.setAttribute('data-theme', saved);
+  label.textContent = saved === 'dark' ? '🌙' : '☀️';
+
+  toggle.addEventListener('click', () => {
+    const current = html.getAttribute('data-theme');
+    const next = current === 'light' ? 'dark' : 'light';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    label.textContent = next === 'dark' ? '🌙' : '☀️';
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.project-card, .cert-card, .edu-card, .contact-item, .skill-chip, .fact-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>

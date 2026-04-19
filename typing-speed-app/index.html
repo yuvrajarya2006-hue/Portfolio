@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Speed Test</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="logo spidey-logo">
+        <svg viewBox="0 0 100 100">
+            <path d="M50 10 L50 90 M10 30 L90 70 M10 70 L90 30 M20 50 L80 50" stroke="#E23636" stroke-width="1" fill="none"/>
+            <path d="M50 20 C30 20 20 40 20 50 C20 60 30 80 50 80 C70 80 80 60 80 50 C80 40 70 20 50 20" stroke="#E23636" stroke-width="2" fill="none"/>
+        </svg>
+    </div>
+
+    <div class="logo batman-logo">
+        <svg viewBox="0 0 100 50">
+            <path d="M50 5 L47 12 L40 10 C20 10 10 25 10 30 C15 40 35 45 50 45 C65 45 85 40 90 30 C90 25 80 10 60 10 L53 12 L50 5" fill="#FFD700"/>
+        </svg>
+    </div>
+
+    <div class="container">
+        <div class="stats">
+            <div class="stat-box">Time: <span id="timer">0s</span></div>
+            <div class="stat-box">WPM: <span id="wpm">0</span></div>
+            <div class="stat-box">Accuracy: <span id="accuracy">100%</span></div>
+        </div>
+
+        <div id="quote-display" class="quote-area">Loading...</div>
+        
+        <textarea id="quote-input" placeholder="Click 'Start' to begin..." disabled></textarea>
+        
+        <button id="action-btn">Start Test</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
